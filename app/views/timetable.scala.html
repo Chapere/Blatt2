@@ -1,18 +1,33 @@
-@*
-* This template takes a single argument, a String containing a
-* message to display.
-*@
-@import javax.swing.text.html.HTML
-
-@(title: HTML)(semester: String)
+@(title: String)(schedule: List[List[String]])
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    @*Das ist das was auf dem Browser Tab angezeigt wird*@
     <head>
-        <title>@title="Studenplan"</title>
+        <title>
+            @title
+        </title>
+        <style>
+            table, td, th { border: 1px solid black; }
+        </style>
     </head>
     <body>
-        <section class="content">@semester</section>
+        @*Das ist die Überschrift der Seite*@
+        <h1>Studenplan</h1>
+
+        @*Das ist die erstellte Tabelle*@
+        <table>
+            @for(x <- schedule) {
+                <tr>
+                    @for(zelle <- x) {
+                        <td>
+                            @zelle
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+
     </body>
 </html>
 
